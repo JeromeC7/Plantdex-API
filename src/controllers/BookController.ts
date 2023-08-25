@@ -10,9 +10,9 @@ export class BookController{
         res.send({status: "OK", data: allBooks});
     }
 
-    getBookById(req: Request, res: Response){
+    async getBookById(req: Request, res: Response){
         const id = Number(req.params.id);
-        const book = this.bookService.getById(id);
+        const book = await this.bookService.getById(id);
         if (!book) {
         res.status(404).send({
             status: "FAILED",
