@@ -22,4 +22,30 @@ export class BookController{
         }
         res.send({ status: "OK", data: book });
     }
+
+    async create(req: Request, res: Response){
+        const body = req.body;
+        const createBook = await this.bookService.create(body.title);
+        res.send({status: "OK",date: createBook});
+    }
+
+    async update(req: Request, res: Response){
+        const id = Number(req.params.id);
+        const body = req.body;
+        const updatedBook = await this.bookService.update(id, body.title);
+        if (!updatedBook) {
+        res.status(404).send({
+            status: "FAILED",
+            message: `Le livre avec l'id ${id} n'existe pas...`,
+        });
+        return;
+        }
+        res.send({ status: "OK", data: updatedBook });
+    }
+
+    async delete(req: Request, res: Response){
+        const id = Number(req.params.id);
+        await this.bookService.delete(id);
+        res.send({ status: "OK" });
+    }
 }
