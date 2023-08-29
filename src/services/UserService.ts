@@ -1,10 +1,10 @@
 import AppDataSource from "../data-source";
-import { User } from "../entities/User.entity";
+import { Utilisateur } from "../entities/Utilisateur.entity"; 
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export class UserService {
-  private userRepository = AppDataSource.getRepository(User);
+  private userRepository = AppDataSource.getRepository(Utilisateur);
   
   // inscription
   async signup(email: string, password: string){

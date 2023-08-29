@@ -2,7 +2,7 @@ import * as dotenv from 'dotenv';
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { Plante } from './entities/Plante.entity';
-import { User } from './entities/User.entity';
+import { Utilisateur } from './entities/Utilisateur.entity';
 
 dotenv.config({ path: '.env.local' });
 
@@ -15,7 +15,7 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_NAME,
   synchronize: false,
   logging: false,
-  entities: [Plante,User],
+  entities: [Plante,Utilisateur],
   migrations: [],
   subscribers: [],
 });
