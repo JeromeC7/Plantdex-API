@@ -10,7 +10,7 @@ export class UserController{
     const createdUser = await this.userService.signup(email, password);
 
     if (!createdUser) {
-      res.status(500).send({ status: "FAILED", message: "Oups..." });
+      res.status(500).send({ status: "FAILED", data: "Oups..." });
       return;
     }
 
@@ -23,7 +23,7 @@ export class UserController{
     const token = await this.userService.login(email, password);
 
     if (!token) {
-        res.status(500).send({status:"FAILED",message:"oups..."});
+        res.status(500).send({status:"FAILED",data:"oups..."});
         return;
     }
     res.status(201).send({ status: "OK", data: token });

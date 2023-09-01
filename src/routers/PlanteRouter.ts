@@ -16,11 +16,12 @@ planteRouter.get("/",(req: Request,res: Response)=>{
 planteRouter.get("/:id",checkIdnumber,(req: Request,res: Response)=>{
     planteController.getPlantById(req,res);
 });
-planteRouter.post("/",(req: Request,res: Response)=>{
+planteRouter.post("/",checkToken,(req: Request,res: Response)=>{
     planteController.create(req,res);
 });
 planteRouter.put(
   "/:id",
+  checkToken,
   checkIdNumber,
   (req: Request, res: Response) => {
     planteController.update(req, res);
@@ -28,6 +29,7 @@ planteRouter.put(
 );
 planteRouter.delete(
   "/:id",
+  checkToken,
   checkIdNumber,
   (req: Request, res: Response) => {
     planteController.delete(req, res);

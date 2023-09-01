@@ -24,6 +24,8 @@ export class PlanteController{
     }
 
     async create(req: Request, res: Response){
+        console.log("Test headers", req.headers.authorization);
+        
         const body = req.body;
         const createPlant = await this.planteService.create(body.id,body.nom,body.soleil,body.arrosage,body.categorie,body.image);
         res.send({status: "OK",date: createPlant});
